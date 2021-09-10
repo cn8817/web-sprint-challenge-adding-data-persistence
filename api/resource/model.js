@@ -5,9 +5,11 @@ function getAll() {
     return db('resources')
 }
 
-async function postNew(resource) {
-    const [resource_id] = await db('projects').insert(resource)
-    return getAll().where({ resource_id }).first()
+function postNew(resources) {
+    return db('resources').insert(resources)
+    .then(([resource_id]) => {
+        return db('resources').where('resource_id', resource_id).first()
+    })
 }
 
 module.exports = {
