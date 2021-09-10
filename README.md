@@ -31,7 +31,6 @@ In this project you will be given a set of requirements and must design a databa
 
 ### Required Dependencies
 
-
 The project needs some additional NPM dependencies in order to work.
 
 ### Required Scripts
