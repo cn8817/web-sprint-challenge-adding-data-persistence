@@ -1,15 +1,13 @@
 // build your `Project` model here
 const db = require('../../data/dbConfig.js')
-const { get } = require('./router.js')
 
 function getAll() {
     return db('projects')
 }
 
-function postNew(project) {
-    return db('projects')
-        .insert(project)
-        .then(([id]) => get(id))
+async function postNew(project) {
+    const [project_id] = await db('projects').insert(project)
+    return getAll().where({ project_id }).first()
 }
 
 module.exports = {
